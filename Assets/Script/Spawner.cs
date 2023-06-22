@@ -5,13 +5,20 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public List<GameObject> pooledObjects;
+    
     public GameObject[] objectToPool;
+ 
+    public bool IsRoundRun { get; set; }
+
     public int amountToPool;
+    
     private int count = 0;
+    
     [SerializeField]
     private GameMenager gameMenager;
+    
     [SerializeField]
-    private Transform SpawnPoint;
+    private Transform[] SpawnPoint;
 
     void Start()
     {
@@ -27,11 +34,14 @@ public class Spawner : MonoBehaviour
             pooledObjects.Add(tmp);
             count++;
         }
-
-        StartCoroutine(SpawnFruits());
-
     }
 
+    public void StartSpawn(float timeSpawn)
+    {
+        StartCoroutine(SpawnFruits(timeSpawn));
+    }
+
+    // Zwraca obiekt do puli
     private GameObject GetObjectToPool()
     {
         GameObject tempObject;
@@ -44,6 +54,7 @@ public class Spawner : MonoBehaviour
         return tempObject = objectToPool[count];
     }
 
+    // Zwraca obiekt z puli
     public GameObject GetPooledObject()
     {
         for (int i = 0; i < amountToPool; i++)
@@ -65,14 +76,14 @@ public class Spawner : MonoBehaviour
         return tmp;
     }
 
-    IEnumerator SpawnFruits()
+    // Coroutine dla generowania owoców
+    IEnumerator SpawnFruits(float time)
     {
-        while (true)
+        while (IsRoundRun)
         {
-            yield return new WaitForSeconds(2f);
-            GetPooledObject().transform.position = SpawnPoint.position;
+            yield return new WaitForSeconds(time);
+            int randomSpawn = Random.RandomRange(0, SpawnPoint.Length - 1);
+            GetPooledObject().transform.position = SpawnPoint[randomSpawn].position;
         }
     }
-
-    
 }
