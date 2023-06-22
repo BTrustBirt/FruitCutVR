@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float strenght;
+    private int strenght;
 
-    public float Strenght
+    public int Strenght
     {
         get { return strenght; } 
         set { strenght = value; }
     }
 
-    private float accuracy;
+    private int accuracy;
 
-    public float Accuracy 
+    public int Accuracy 
     { 
         get { return accuracy; } 
         set {accuracy= value; } 

@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    [HideInInspector]
-    public float strong;
+    private float strong;
 
-    public bool isHold;
+    private bool isHold;
 
     [SerializeField]
     private Transform tipPosition;
 
-    public float minSpeed = 10f;
+    [field:SerializeField]
+    public float minSpeed { get; private set; }
 
     private Vector3 previoousPosition;
 
     private GameMenager gameMenager;
 
+    // Ustawia flagê okreœlaj¹c¹, czy miecz jest trzymany
     public void Hold(bool value)
     {
         isHold= value;
@@ -39,17 +40,28 @@ public class Sword : MonoBehaviour
 
             if (speed > minSpeed)
             {
-                strong = speed;
-                Debug.Log(speed + "Przekroczono minimaln¹ wartoœæ szybkoœci obiektu dziecka!");
+                strong = speed/10;
+            }
+            else
+            {
+                strong = 0;
             }
 
-            // Zapisz bie¿¹c¹ pozycjê jako poprzedni¹ pozycjê na potrzeby kolejnej aktualizacji
             previoousPosition = correntPosition;
-           // Debug.Log(speed + "  pprzed si³a");
         }
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Fruits")
+        {
+            other.GetComponent<IFruits>().Use(strong);
 
-
+            if (strong > 0)
+            {
+                gameMenager.Cutting(strong);
+            }
+                      
+        }
+    }
 }

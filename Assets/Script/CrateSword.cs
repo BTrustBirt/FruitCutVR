@@ -10,20 +10,7 @@ public class CrateSword : MonoBehaviour
     [SerializeField]
     private Transform spawnPoint;
 
-    [SerializeField]
-    private Sword swordObject;
-
-    public Sword GetSword()
-    {
-        if (swordObject != null)
-        {
-            return swordObject;
-        }
-
-        return null;
-    }
-
-    public void ResetSwordTransform(GameMenager value)
+    public Sword ResetSwordTransform(GameMenager value)
     {
         if (sword != null)
         {
@@ -32,8 +19,9 @@ public class CrateSword : MonoBehaviour
         }
 
         sword =  Instantiate(swordPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, null);
-        swordObject = sword.GetComponentInChildren<Sword>();
-        swordObject.GetGameMenager(value);
-        swordPrefab.SetActive(true);
+        Sword sw = sword.GetComponentInChildren<Sword>();
+        sw.GetGameMenager(value);
+
+        return sw;
     }
 }
