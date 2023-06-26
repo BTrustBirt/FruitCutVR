@@ -83,7 +83,7 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(time);
             
-            GetPooledObject().transform.position = SpawnPoint[gameMenager.actualRound].position;
+            GetPooledObject().transform.position = SpawnPoint[gameMenager.actualRound-1].position;
         }
     }
 }
