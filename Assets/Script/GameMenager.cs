@@ -55,7 +55,6 @@ public class GameMenager : MonoBehaviour
             sword = null;
             return;
         }
-
         sword = crateSword.ResetSwordTransform(this);
     }
 
@@ -71,26 +70,11 @@ public class GameMenager : MonoBehaviour
 
     public void NextRound(int round)
     {
-        actualRound = round-1;
+        actualRound = round;
         spawner.IsRoundRun = true;
         uiMenager.ShowRound(actualRound.ToString());
         StartRound();
         CalculateAllAcore();
-
-        //if (actualRound == roundScore.Length)
-        //{
-        //    actualRound = 0;
-        //    spawner.IsRoundRun = false;
-        //    uiMenager.ShowRound("Game Over");
-        //    CalculateAllAcore();
-        //    StopAllCoroutines();
-        //}
-        //else
-        //{
-        //    spawner.IsRoundRun = true;
-        //    uiMenager.ShowRound(actualRound.ToString());
-        //    StartRound();
-        //}
     }
 
     public void StartGame()
