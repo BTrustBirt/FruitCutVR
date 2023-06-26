@@ -40,11 +40,11 @@ public class Sword : MonoBehaviour
 
             if (speed > minSpeed)
             {
-                strong = speed/10;
+                strong = speed;
             }
             else
             {
-                strong = 0;
+                //strong = 0;
             }
 
             previoousPosition = correntPosition;

@@ -25,6 +25,7 @@ public class Frut : MonoBehaviour, IFruits
         Invoke(nameof(DestroyObject), 3f);
         particalSystem.gameObject.SetActive(true);
         particalSystem.Stop();
+        gameObject.GetComponent<Rigidbody>().velocity= Vector3.zero;
     }
 
     public void SetGameMenager(GameMenager gm)
