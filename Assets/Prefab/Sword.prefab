@@ -86,9 +86,9 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3604369843773132547}
   m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -497,6 +497,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2359886, guid: 923e2c857250b784eb3a49ce857086c2, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359886, guid: 923e2c857250b784eb3a49ce857086c2, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7508556516245974961, guid: 923e2c857250b784eb3a49ce857086c2,
         type: 3}
       propertyPath: m_UseGravity
@@ -538,7 +546,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce57f6f3a22e92543a191336891b697f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHold: 0
   tipPosition: {fileID: 1034627810997491063}
   <minSpeed>k__BackingField: 10
 --- !u!4 &8186745727822956679 stripped

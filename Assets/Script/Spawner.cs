@@ -82,8 +82,8 @@ public class Spawner : MonoBehaviour
         while (IsRoundRun)
         {
             yield return new WaitForSeconds(time);
-            int randomSpawn = Random.RandomRange(0, SpawnPoint.Length - 1);
-            GetPooledObject().transform.position = SpawnPoint[randomSpawn].position;
+            
+            GetPooledObject().transform.position = SpawnPoint[gameMenager.actualRound].position;
         }
     }
 }

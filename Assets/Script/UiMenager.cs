@@ -8,64 +8,53 @@ using UnityEngine;
 public class UiMenager : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshPro round1Text;
+    private TextMeshPro roundScroe;
 
     [SerializeField]
-    private TextMeshPro round2Text;
+    private TextMeshPro RoundNumber;
     
     [SerializeField]
-    private TextMeshPro round3Text;
-
-    [SerializeField]
-    private TextMeshPro AllScoreText;
+    private TextMeshPro allSCore;
 
     [SerializeField]
     private TextMeshPro damageStrong;
 
+    [SerializeField]
+    private TextMeshPro time;
     public void PowerShowText(int value)
     {
-        damageStrong.text = value.ToString();
-        
-        Invoke(nameof(CleanBoardDamage),0.5f);
+        damageStrong.text = value.ToString();   
     }
 
-    public void RoundTurn(int round, int strong,int sumRound)
+    public void ShowRound(string runds)
     {
-        round1Text.text = "";
-        round2Text.text = "";
-        round3Text.text = "";
+        RoundNumber.text = runds;
         damageStrong.text = "";
+    }
 
-        switch (round)
-        {
-            case 1: 
-                PowerShowText(strong);
-                round1Text.text = sumRound.ToString();
-                break;
-            case 2:
-                PowerShowText(strong);
-                round2Text.text = sumRound.ToString();
-                break;
-            case 3:
-                PowerShowText(strong); 
-                round3Text.text = sumRound.ToString();
-                break;
-            default:
-                break;
-        }
+    public void RoundTurn( int strong,int sumRound)
+    {
+        damageStrong.text = strong.ToString();
+        roundScroe.text = sumRound.ToString();
+
     }
 
     public void GameOver(int value)
     {
-        AllScoreText.text = value.ToString();
+        allSCore.text = value.ToString();
+        
     }
 
     public void CleanGame()
     {
-        round1Text.text = "";
-        round2Text.text = "";
-        round3Text.text = "";
         damageStrong.text = "";
+        allSCore.text = "";
+        
+    }
+
+    public void ShowTimer(float minutes,float seconds)
+    {
+        time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void CleanBoardDamage()
